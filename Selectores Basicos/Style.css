@@ -1,0 +1,26 @@
+body{
+    width: 540;
+    margin: auto;
+}
+
+div{
+    background-color: peru;
+}
+
+p{
+    color: white;
+}
+
+div > p{
+    color: pink;
+}
+
+div + p{
+    font-family: cursive;
+    color: pink;
+}
+
+p ~ ul{
+    color: yellow;
+    background-color: blue;
+}
