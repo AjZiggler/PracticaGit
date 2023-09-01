@@ -24,3 +24,15 @@ p ~ ul{
     color: yellow;
     background-color: blue;
 }
+
+tbody tr:nth-child(even){
+    background-color: aqua;
+}
+td:hover{
+    background-color: blueviolet;
+    color: azure;
+}
+
+td:active{
+    background-color: brown;
+}
