@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.cont {
+    border: 2px solid blue;
+    background-color: aqua;
+    color: blue;
+    float: left;
+    height: 100%;
+    position: absolute;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+#sidebar {
+    width: 30%;
+}
+
+#content {
+    left: 30%;
+    width: 70%;
+}
+
+#header {
+    width: 10%;
+    position: static;
+}
