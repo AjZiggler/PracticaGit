@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="StylesLayour.css">
+    <style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+    
+    .cont {
+    border: 2px solid blue;
+    background-color: aqua;
+    color: blue;
+    float: left;
+    height: 100%;
+    position: absolute;
+    bottom: 50px;
+    }
+    body {
+    width: 100vw;
+    height: 100vh;
+    }
+    
+    #sidebar {
+    width: 30%;
+    top: 30px;
+    }
+
+#content {
+    left: 30%;
+    width: 70%;
+    top: 30px;
+}
+
+#header {
+    width: 100vw;
+    position: static;
+}
+
+        input {
+            display: none;
+        }
+
+        input:checked + div#sidebar {
+            display:none;
+        }
+
+        input:checked + div#content {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont" id="header"><center>header</center></div>
+
+    <input id="togle" type="checkbox">
+    <div class="cont" id="sidebar"><center>sidebar</center></div>
+
+
+    <div class="cont" id="content">
+        <label for="togle">Menu</label>
+        <center>content</center>
+    </div>
+</body>
+</html>
