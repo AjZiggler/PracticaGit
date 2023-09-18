@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --color-primario: gray;
+            --color-secundario: green;
+        }
+
+        body:has(input:checked + div#contenedor) {
+            background-color: var(--color-secundario);
+        }
+
+        input:checked + div#contenedor {
+            background-color: var(--color-secundario);
+        }
+
+        div#contenedor{
+            background-color: var(--color-primario);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .parrafo {
+            color:darkblue;
+            line-height: 1.5em;
+        }
+        
+        #par1 {
+            font-size: 20px;
+        }
+        h1{
+            margin-top: 0;
+            color: red;
+        }
+
+        #local {
+            color: royalblue;
+        }
+    </style>
+</head>
+<body>
+    <label for="tema">Tema</label>
+    <input  id="tema" type="checkbox">
+
+    <div id="contenedor">
+        <h1>Las siete maravillas de Polonia</h1>
+    <p id="Par1">Las siete maravillas de Polonia, fue una selección de las maravillas 
+        culturales situadas en Polonia, realizada por el periódico polaco Rzeczpospolita 
+        a partir de un concurso público en el país.
+    </p>
+    <p id="Par2">
+        <table>
+            <tr>
+                <td id="local"> # </td>
+                <td id="local"> Nombre </td>
+                <td id="local"> Localización </td>
+            </tr>
+            <tr>
+                <td> 1 </td>
+                <td> Minas de sal de Wieliczka
+                     Kopalnia soli Wieliczka
+                     Patrimonio de la Humanidad de la UNESCO </td>
+                <td> Wieliczka </td>
+            </tr>
+            <tr>
+                <td> 2 </td>
+                <td>ciudad vieja de Toruń
+                    Patrimonio de la Humanidad de la 
+                    UNESCO</td>
+                <td> Toruń </td>
+            </tr>
+            <tr>
+                <td> 3 </td>
+                <td>Castillo de Malbork
+                    Zamek w malborku
+                    Patrimonio de la humanidad de la 
+                    UNESCO
+                </td>
+                <td> Malbork </td>
+            </tr>
+            <tr>
+                <td> 4 </td>
+                <td>Castillo de Wawel y catedral de 
+                    Wawel
+                    Zamek  Królewski na Wawelu</td>
+                <td> Cracovia </td>
+            </tr>
+            <tr>
+                <td> 5 </td>
+                <td>Canal de Elblag
+                    Kanał Elbląski
+                </td>
+                <td> Voivodato de Varmia y Masuria</td>
+            </tr>
+            <tr>
+                <td> 6 </td>
+                <td>Ciudad vieja de Zamość
+                    Patrimonio de la Humanidad de la 
+                    UNESCO</td>
+                <td> Zamość </td>
+            </tr>
+            <tr>
+                <td> 7 </td>
+                <td>Plaza del Mercado de Cracovia y 
+                    centro histórico de Cracovia
+                    centro históricco de Cracovia
+                    Patrimonio de la Humanidad de la
+                    UNESCO
+                </td>
+                <td>Cracovia</td>
+            </tr>
+        </table>
+    </p>
+    </div>
+</body>
+</html>
