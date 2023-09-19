@@ -1,0 +1,37 @@
+body:has(input:checked + div#contenedor) {
+  background-color: green;
+}
+input:checked + div#contenedor {
+  background-color: green;
+}
+div#contenedor {
+  background-color: gray;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.parrafo {
+  color: darkblue;
+  line-height: 1.5em;
+}
+#par1 {
+  font-size: 20px;
+}
+h1 {
+  margin-top: 0;
+  color: red;
+}
+#local {
+  color: royalblue;
+}
+div#contenedor {
+  font-family: 'Courier New', Courier, monospace;
+}
+div#contenedor #par1 {
+  color: red;
+}
+div#contenedor #par2 {
+  color: green;
+}
