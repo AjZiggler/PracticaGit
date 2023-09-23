@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 540;
+            margin: auto;
+        }
+
+        table{
+            width: 100%;
+        }
+        
+        tbody tr:nth-child(even){
+            background-color: aqua;
+        }
+        
+        td:hover{
+    
+            background-color: blueviolet;    
+            color: azure;
+        }
+        
+        td:active{
+            background-color: brown;
+        }
+
+        table, thead, tbody, tr, th, td {
+            border: 1px solid blue;
+            border-collapse: collapse;
+        }
+
+        @media screen and (max-width: 600px) {
+            table, thead, tbody, tr, th, td {
+                display: block;
+            }
+            thead{
+                display: none;
+            }
+            td{
+                padding-left: 50%;
+                justify-content: center;
+                height: calc(1em + 0.5em);
+            }
+
+            td:nth-child(2)::before{ content: "Lunes"; position: absolute; left: 10px;}
+            td:nth-child(3)::before{ content: "Martes"; position: absolute; left: 10px;}
+            td:nth-child(4)::before{ content: "Miercoles"; position: absolute; left: 10px;}
+            td:nth-child(5)::before{ content: "Jueves"; position: absolute; left: 10px;}
+            td:nth-child(6)::before{ content: "Viernes"; position: absolute; left: 10px;}
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Horario</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>7:00 am a 8:00 am</td><td>Programación web</td><td>Programación web</td><td>Programación web<td>Programación web</td></td><td>Programación web</td></tr>
+            <tr><td>8:00 am a 9:00 am</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>9:00 am a 10:00 am</td><td></td><td>Programación logica y funcional</td><td>Programación logica y funcional</td><td>Programación logica y funcional</td><td>Programación logica y funcional</td></tr>
+            <tr><td>10:00 am a 11:00 am</td><td>Taller sistemas operativos</td><td></td><td>Taller sistemas operativos</td><td>Taller sistemas operativos</td><td>Taller sistemas operativos</td></tr>
+            <tr><td>11:00 am a 12:00 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>12:00 pm a 1:00 pm</td><td>Principios electricos</td><td></td><td>Principios electricos</td><td></td><td></td></tr>
+            <tr><td>1:00 pm a 2:00 pm</td><td>Principios electricos</td><td></td><td>Principios electricos</td><td></td><td>Principios electricos</td></tr>
+            <tr><td>2:00 pm a 3:00 pm</td><td>Fundamentos de base de datos</td><td>Fundamentos de base de datos</td><td>Fundamentos de base de datos</td><td>Fundamentos de base de datos</td><td>Fundamentos de base de datos</td></tr>
+        </tbody>
+    </table>
+</body>
+</html>
