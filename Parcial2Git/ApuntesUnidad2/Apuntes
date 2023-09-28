@@ -1,0 +1,19 @@
+Apredner a manejar lo siguiente
+JavaScript: tipos de datos, variables, estructura y objetos
+Dialectos: Typescript
+
+Para poder utilizar lo siguiente hay que aprender a manejar lo anterior
+FrakeWorks: Angular, Vue, Rest
+
+variables en JavaScript
+
+declarar una variable: 
+
+    Ambito  Hosting
+var Tanción correcto
+let Bloque Error
+const Bloque Error
+
+No se recomienda usar Var porque JavaScript va a mover los documentos hacia arriba
+
+primitivos: number, string, Bigint, null, undetned, symbol
