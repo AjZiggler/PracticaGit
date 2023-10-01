@@ -17,3 +17,5 @@ const Bloque Error
 No se recomienda usar Var porque JavaScript va a mover los documentos hacia arriba
 
 primitivos: number, string, Bigint, null, undetned, symbol
+
+web: 
