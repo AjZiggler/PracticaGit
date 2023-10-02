@@ -19,3 +19,15 @@ No se recomienda usar Var porque JavaScript va a mover los documentos hacia arri
 primitivos: number, string, Bigint, null, undetned, symbol
 
 web: 
+modulos vigentes: Javascript y nodejs
+
+programas para utilizarlos son: npm, pnpm y yavn
+
+empaquetador:
+- Webpack
+- Rollup
+- Vite
+
+recoemndable ver sistemas de modulos
+
+para no estresarnos es recomendable usar por ahora en lls entornos Node, en npm.js usar npm y Ecma es nativos
