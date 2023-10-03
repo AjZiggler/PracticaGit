@@ -31,3 +31,16 @@ empaquetador:
 recoemndable ver sistemas de modulos
 
 para no estresarnos es recomendable usar por ahora en lls entornos Node, en npm.js usar npm y Ecma es nativos
+
+Seleccionar elementos del DOM(manera 2)
+
+Metodo de busqueda
+Element: Busca el primer elemento que coincida con el selector CSS
+Array: Busca todos los elementos que coincidan con el selecctor CSS
+
+* Crear elementos DOM*
+  Metodos
+  Element: Crea y devuelve el elemento HTML definido por el String
+  Nope: crea
+
+Que es el DOM: es una presentación de objetos en elementos
