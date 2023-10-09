@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!--<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>-->
     <style>
          * {
             box-sizing: border-box;
@@ -14,27 +15,69 @@
         .contenedor {
             height: 100vh;
             width: 100vw;
-            background-color: black;
+            background-color: darkblue;
             display: grid;
-            grid-template-columns: 100px 100px 100px;
-            grid-template-rows: 100px 100px 100px;
+            grid-template-columns: 25% 25% 25%;
+            grid-template-rows: 25% 25% 25%;
             justify-content: center;
-            justify-items: stretch;
-            align-items: stretch;
+            /*justify-items: stretch;
+            align-items: stretch;*/
         }
 
         .caja {
             /*width: 100px;*/
-            background-color: aqua;
-            border: 1px solid blue;
+            background-color: red;
+            border: 1px solid white;
             font-size: 60px;
+            display: flex;
             text-align: center;
-            
+            align-items: center;
+            justify-content: center;
         }
+
+        #caja11{
+            background-color: transparent;
+        }
+
+        #btnLim {
+            padding: 10px 20px;
+            font-size: 24px;
+            margin-top: 20px;
+            background-color: rgb(37, 3, 71);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            justify-content: center;
+        }
+
+        #btnLim:hover {
+            background-color: rgb(40, 187, 21);
+        }
+
+        /*.ocupado{
+            color: darkblue;
+        }*/
+
+        h1{
+            text-align: center;
+        }
+
+        /*.casilla{
+            height: 100px;
+            text-align: center;
+            font-size: 2em;
+            color: lightgray;
+            padding: 1em;
+        }
+
+        .ganador{
+            background-color: green;
+        }*/
     </style>
 </head>
 <body>
-    <div class="contenedor">
+    <div class="contenedor" id="cont">
         <div id="caja1" class="caja"></div>
         <div id="caja2" class="caja"></div>
         <div id="caja3" class="caja"></div>
@@ -44,17 +87,19 @@
         <div id="caja7" class="caja"></div>
         <div id="caja8" class="caja"></div>
         <div id="caja9" class="caja"></div>
-        <div id="caja10"></div>
-        <div id="caja11"><button btn="btnLim">Limpiar</button></div>
-        <div id="caja12"></div>
+        <h1><button type="button" id="btnLim">Limpiar</button></h1>
+        <div id="info" class="col-12 alert-info mt-3">info: Comienza en jugador 1 con X</div>
     </div>
 
     <script>
         var XO="X";
+        var jugando = true;
+        /*var document = document.querySelectorAll(".caja");*/
+        
         document.getElementById("cont").addEventListener("click",function(e){
             console.log(e.target.id);
 
-            if (document.getElementById(e.target.id).innerText="") {
+            if (document.getElementById(e.target.id).innerText=="") {
                 if (XO=="X"){
                     XO="O"
                 }else{
@@ -62,15 +107,80 @@
                 }
                 document.getElementById(e.target.id).innerText=XO;
             }
-        })
+        });
 
         document.getElementById("btnLim").addEventListener("click",function(){
-            let cajas = document.getElementByIdClassName("caja");
+            let cajas = document.getElementsByClassName("caja");
 
             for (const elemento of cajas){
-                console.log(elemento);
+                elemento.innerText="";
             }
-        })
+        });
+
+       /*function jugar(id){
+            if(jugando){
+                var elem = document.getElementById(id);
+                elem.innerHTML = XO;
+                elem.classList.add('ocupado');
+
+                info('Es el turno de ' + XO);
+                movimientos++;
+                validarTablero(); 
+            }
+
+            if(movimientos == 9 && jugando){
+                jugando = false;
+                info('Empate');
+            }
+        }
+
+        function validarTablero(){
+            validarLinea('caja1', 'caja2', 'caja3');
+            validarLinea('caja4', 'caja5', 'caja6');
+            validarLinea('caja7', 'caja8', 'caja9');
+            validarLinea('caja1', 'caja4', 'caja7');
+            validarLinea('caja2', 'caja5', 'caja8');
+            validarLinea('caja3', 'caja6', 'caja9');
+            validarLinea('caja1', 'caja5', 'caja9');
+            validarLinea('caja3', 'caja5', 'caja7');
+        }
+
+        function validarLinea(a,b,c){
+            var v1 = document.getElementById(a).innerHTML;
+            var v2 = document.getElementById(a).innerHTML;
+            var v3 = document.getElementById(a).innerHTML;
+
+            if(v1 == v2 && v2 == v3){
+                info('Tenemos un ganador!!!');
+                document.getElementById(a).classList.add('ganador');
+                document.getElementById(b).classList.add('ganador');
+                document.getElementById(c).classList.add('ganador');
+                jugando = false
+            }
+        }
+
+        function info(msg){
+            document.getElementById('info').innerHTML = msg;
+        }*/
+        
+
+        /*$('document').ready(function(){
+            var XO="X";
+            $("#cont").click(function(e){
+                if( $(e.target.id).text()=="")
+                if(XO=="X"){XO="O"} else {XO="X"}
+                $(e.target.id).text(XO);
+            });
+
+            $("#btnLim").click(function(){
+                $(".caja").each(function() {
+                    console.log(this);
+                });
+            });
+        });*/
     </script>
 </body>
 </html>
+<!--
+    https://www.youtube.com/watch?v=hF_Sq9YPwjs
+-->
