@@ -75,7 +75,35 @@
 
     <script>
         var XO="X";
-        var jugando = true;
+        var result ='';
+        var linea = null;
+        //Ganador en horizontal
+        var btn=[{a:caja1,b:caja2,c:caja3},{a:caja4,b:caja5,c:caja6},{a:caja7,b:caja8,c:caja9}];
+        //Ganador en vertical
+        var btn=[{a:caja1,b:caja4,c:caja7},{a:caja2,b:caja5,c:caja8},{a:caja3,b:caja6,c:caja9}];
+        //Ganador en diagonal
+        var btn=[{a:caja1,b:caja5,c:caja9},{a:caja1,b:caja5,c:caja7}];
+
+        for (let i = 0; i < btn.length; i++) {
+             // compara una triada
+            if (XO[btn[i].a]=='X' && XO[btn[i].b]=='X' && XO[btn[i].c]=='X') { 
+                result='X'; 
+                linea = btn[i]; 
+                break; 
+            }
+            if (XO[btn[i].a]=='O' && XO[btn[i].b]=='O' && XO[btn[i].c]=='O') { 
+                result='O'; 
+                linea = btn[i]; 
+                break; 
+            }
+        }
+
+        if (result.length>0) {
+                document.getElementById("cont"+ linea.a).style.backgroundColor = "yellow";
+                document.getElementById("cont"+ linea.b).style.backgroundColor = "yellow";
+                document.getElementById("cont"+ linea.c).style.backgroundColor = "yellow";
+                setTimeout(function() { alert('Gano el jugador: ' + result); },300);
+            }
         
         document.getElementById("cont").addEventListener("click",function(e){
             console.log(e.target.id);
@@ -97,6 +125,8 @@
                 elemento.innerText="";
             }
         });
+
+
     </script>
 </body>
 </html>

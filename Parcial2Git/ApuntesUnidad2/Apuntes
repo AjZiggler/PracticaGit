@@ -44,3 +44,9 @@ Array: Busca todos los elementos que coincidan con el selecctor CSS
   Nope: crea
 
 Que es el DOM: es una presentación de objetos en elementos
+
+## Formato para intercambiar información4
+- XML: Se usa cuando vas a transmitir datos al gobierno y archivos de config
+- JSON Java: Es mas facil de implementar y el activo de internet
+
+instalar

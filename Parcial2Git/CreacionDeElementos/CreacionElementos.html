@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+<body>
+    <div id="contenedor"></div>
+    <script>
+        let enc=['Nombre','ApellidoP','ApellidoM'];
+        let datos = [{
+            nombre:"Ivan",
+            apeelidop:"Rosales",
+            apellidom:"Cancino"
+        },{
+            nombre:"Ivan",
+            apeelidop:"Rosales",
+            apellidom:"Cancino"
+        },{
+            nombre:"Ivan",
+            apeelidop:"Rosales",
+            apellidom:"Cancino"
+        }];
+
+        let tab = document.createElement("table");
+        let enca = document.createElement("thead");
+        let fil = document.createElement("tr");
+
+        enc.forEach(elemento=>{
+            let th = document.createElement("th");
+            th.innerText=elemento;
+            fil.appendChild(th);
+            //appendChild es para crear un hijo
+
+        });
+
+        enca.appendChild(fil);
+        tab.appendChild(enca);
+        
+        tbody=document.createElement("tbody");
+
+        datos.forEach(function(elemento) {
+            let fila = document.createElement("tr");
+            let td1 = document.createElement("td");
+            td1.innerText=elemento.nombre;
+            fila.appendChild(td1);
+
+            let td2 = document.createElement("td");
+            td2.innerText=elemento.apeelidop;
+            fila.appendChild(td2);
+
+            let td3 = document.createElement("td");
+            td3.innerText=elemento.apellidom;
+            fila.appendChild(td3);
+
+            tbody.appendChild(fila);
+        })
+        
+        tab.appendChild(tbody);
+
+        document.getElementById("contenedor").appendChild(tab);
+    </script>
+</body>
+</html>
