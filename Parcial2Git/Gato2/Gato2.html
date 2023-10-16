@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gato</title>
     <style>
-         * {
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -17,25 +17,33 @@
             background-color: darkblue;
             display: grid;
             grid-template-columns: 25% 25% 25%;
-            grid-template-rows: 25% 25% 25% 25%;
+            grid-template-rows: 25% 25% 25%;
             justify-content: center;
+            align-items:stretch;
+            align-content: center;
         }
 
         .caja {
-            background-color: red;
-            border: 1px solid white;
+            background-color: rgb(140, 126, 129);
+            border: 4px solid rgb(76, 59, 93);
             font-size: 60px;
-            display: flex;
             text-align: center;
+            display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        #caja11{
-            background-color: transparent;
+        .jugador-x {
+            color: rgb(234, 234, 244); /* Color para el jugador X */
+            background-color: rgb(9, 255, 0);
         }
 
-        #btnLim {
+        .jugador-o {
+            color: rgb(11, 11, 11); /* Color para el jugador O */
+            background-color: orange;
+        }
+
+        #btn {
             padding: 10px 20px;
             font-size: 24px;
             margin-top: 20px;
@@ -44,89 +52,103 @@
             border: none;
             cursor: pointer;
             border-radius: 5px;
-            justify-content: center;
         }
 
-        #btnLim:hover {
-            background-color: rgb(40, 187, 21);
+        #btn:hover {
+            background-color: rgb(0, 0, 0);
         }
 
-        #caja11 {
+        #caja11{
             align-self: center;
-            justify-self:center;
+            justify-self: center;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
-    <div class="contenedor" id="cont">
-        <div id="caja1" class="caja"></div>
-        <div id="caja2" class="caja"></div>
-        <div id="caja3" class="caja"></div>
-        <div id="caja4" class="caja"></div>
-        <div id="caja5" class="caja"></div>
-        <div id="caja6" class="caja"></div>
-        <div id="caja7" class="caja"></div>
-        <div id="caja8" class="caja"></div>
-        <div id="caja9" class="caja"></div>
-        <div id="caja10"></div>
-        <div id="caja11"><button type="button" id="btnLim">Limpiar</button></div>
-        <div id="caja12"></div>
+    <div class="contenedor">
+        <div class="caja" id="caja1"></div>
+        <div class="caja" id="caja2"></div>
+        <div class="caja" id="caja3"></div>
+        <div class="caja" id="caja4"></div>
+        <div class="caja" id="caja5"></div>
+        <div class="caja" id="caja6"></div>
+        <div class="caja" id="caja7"></div>
+        <div class="caja" id="caja8"></div>
+        <div class="caja" id="caja9"></div>
     </div>
 
     <script>
-        var XO="X";
-        var result ='';
-        var linea = null;
-        //Ganador en horizontal
-        var btn=[{a:caja1,b:caja2,c:caja3},{a:caja4,b:caja5,c:caja6},{a:caja7,b:caja8,c:caja9}];
-        //Ganador en vertical
-        var btn=[{a:caja1,b:caja4,c:caja7},{a:caja2,b:caja5,c:caja8},{a:caja3,b:caja6,c:caja9}];
-        //Ganador en diagonal
-        var btn=[{a:caja1,b:caja5,c:caja9},{a:caja1,b:caja5,c:caja7}];
+      var xo = "X";
+        var boxes = document.querySelectorAll('.caja');
+        var moves = 0;
 
-        for (let i = 0; i < btn.length; i++) {
-             // compara una triada
-            if (XO[btn[i].a]=='X' && XO[btn[i].b]=='X' && XO[btn[i].c]=='X') { 
-                result='X'; 
-                linea = btn[i]; 
-                break; 
+        boxes.forEach(function(box) {
+            box.addEventListener("click", function(e) {
+                if (box.innerText === "") {
+                    if (xo === "X") {
+                        xo = "O";
+                        box.classList.add("jugador-o");
+                    } else {
+                        xo = "X";
+                        box.classList.add("jugador-x");
+                    }
+                    box.innerText = xo;
+                    moves++;
+
+                    // Verificar si hay un ganador o empate
+                    if (checkWinner()) {
+                        Swal.fire({
+                            title: `${xo} es el ganador!`,
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                resetGame();  // Reiniciar el juego
+                            }
+                        });
+                    } else if (moves === 9) {
+                        Swal.fire({
+                            title: 'Empate!',
+                            icon: 'info',
+                            confirmButtonText: 'Ok'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                resetGame();  // Reiniciar el juego
+                            }
+                        });
+                    }
+                }
+            });
+        });
+
+        function checkWinner() {
+            const winningCombinations = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],  // Horizontales
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],  // Verticales
+                [0, 4, 8], [2, 4, 6]             // Diagonales
+
+            ];
+
+            for (const combination of winningCombinations) {
+                const [a, b, c] = combination;
+                if (boxes[a].innerText && boxes[a].innerText === boxes[b].innerText && boxes[a].innerText === boxes[c].innerText) {
+                    return true;  // Hay un ganador
+                }
             }
-            if (XO[btn[i].a]=='O' && XO[btn[i].b]=='O' && XO[btn[i].c]=='O') { 
-                result='O'; 
-                linea = btn[i]; 
-                break; 
-            }
+            return false;  // No hay un ganador
         }
 
-        if (result.length>0) {
-                document.getElementById("cont"+ linea.a).style.backgroundColor = "yellow";
-                document.getElementById("cont"+ linea.b).style.backgroundColor = "yellow";
-                document.getElementById("cont"+ linea.c).style.backgroundColor = "yellow";
-                setTimeout(function() { alert('Gano el jugador: ' + result); },300);
-            }
-        
-        document.getElementById("cont").addEventListener("click",function(e){
-            console.log(e.target.id);
+        function resetGame() {
+            xo = "X";
+            moves = 0;
 
-            if (document.getElementById(e.target.id).innerText=="") {
-                if (XO=="X"){
-                    XO="O"
-                }else{
-                XO="X"
-                }
-                document.getElementById(e.target.id).innerText=XO;
-            }
-        });
-
-        document.getElementById("btnLim").addEventListener("click",function(){
             let cajas = document.getElementsByClassName("caja");
-
-            for (const elemento of cajas){
-                elemento.innerText="";
+            for (const elemento of cajas) {
+                elemento.innerText = "";
+                elemento.classList.remove("jugador-x", "jugador-o");
             }
-        });
-
-
+        }
     </script>
 </body>
 </html>
