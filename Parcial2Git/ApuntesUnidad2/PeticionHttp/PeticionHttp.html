@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty API</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        #character-info {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+        }
+
+        p {
+            color: #333;
+        }
+
+        #btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <button id="btn">Obtener Personaje Aleatorio</button>
+    <div id="character-info"></div>
+    <script>
+        document.getElementById("btn").addEventListener("click", () => {
+            const randomCharacterId = Math.floor(Math.random() * 671) + 1; // Genera un ID aleatorio entre 1 y 671.
+            const xhr = new XMLHttpRequest();
+
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === this.DONE) {
+                    if (this.status === 200) {
+                        const characterData = JSON.parse(this.responseText);
+                        displayCharacterInfo(characterData);
+                    } else {
+                        console.error("Error al obtener datos del personaje.");
+                    }
+                }
+            });
+            xhr.open("GET", `https://rickandmortyapi.com/api/character/${randomCharacterId}`);
+            xhr.send();
+        });
+
+        function displayCharacterInfo(characterData) {
+            const characterInfoDiv = document.getElementById("character-info");
+            const image = characterData.image;
+            characterInfoDiv.innerHTML = `
+                <h2>${characterData.name}</h2>
+                <img src="${image}" alt="${characterData.name}">
+                <p>Especie: ${characterData.species}</p>
+                <p>Estado: ${characterData.status}</p>
+                <p>Género: ${characterData.gender}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
