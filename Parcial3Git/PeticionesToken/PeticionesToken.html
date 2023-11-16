@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(182, 202, 5);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+ 
+        h1 {
+            background-color: rgb(42, 126, 165);
+            color: rgb(0, 0, 0);
+            padding: 20px;
+        }
+ 
+        #gethubToken {
+            background-color: darkblue;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mi Token</h1>
+    <button id="gethubToken">Obtener Token</button>
+    <div id="userInfoContainer"></div>
+
+    <script>
+    const githubToken = "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";
+    
+    // Ejemplo de llamada a la API de GitHub y mostrar la información en HTML
+    fetch('https://api.github.com/user', {
+      headers: {
+        Authorization: `Bearer ${githubToken}`,
+      },
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Mostrar el nombre de usuario en el contenedor
+      document.getElementById('userInfoContainer').innerHTML = `Nombre de usuario: ${data.login}`;
+    })
+    .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>

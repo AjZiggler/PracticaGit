@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <button id="btn_peticion">Peticion</button>
+    </form>
+    <script>
+        document.getElementById("btn_peticion").addEventListener("click", async () =>{
+            let reponse = await fetch("http://localhost:8802", {method});
+            let data = await reponse.text();
+        });
+    </script>
+</body>
+</html>
