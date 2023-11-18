@@ -1,6 +1,8 @@
 const express = require('express');
-
+const cors = require('cors');
 const app = express();
+
+app.use(cors());
 
 app.get('/usuario',(req,res)=>{ 
     
@@ -20,7 +22,7 @@ app.get('/usuario',(req,res)=>{
         consulta,
         function(err, results, fields){
             if(results.lenght==0){
-                //res.json{(mensaje:"idUsuario no existe")};
+                res.json({mensaje:"idUsuario no existe"});
             }else{
                 res.json(results);
             }

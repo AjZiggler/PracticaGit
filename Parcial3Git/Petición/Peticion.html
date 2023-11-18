@@ -7,11 +7,11 @@
 </head>
 <body>
     <form action="">
-        <button id="btn_peticion">Peticion</button>
+        <button type="button" id="btn_peticion">Peticion</button>
     </form>
     <script>
         document.getElementById("btn_peticion").addEventListener("click", async () =>{
-            let reponse = await fetch("http://localhost:8802", {method});
+            let reponse = await fetch("http://localhost:8802/usuario");
             let data = await reponse.text();
         });
     </script>
