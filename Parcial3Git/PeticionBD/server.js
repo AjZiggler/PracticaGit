@@ -1,11 +1,11 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const app = express();
 
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root', // Reemplaza con tu nombre de usuario de MySQL
-    password: 'Passw0rd', // Reemplaza con tu contraseña de MySQL
+    password: '', // Reemplaza con tu contraseña de MySQL
     database: 'Teacher'
 });
 
